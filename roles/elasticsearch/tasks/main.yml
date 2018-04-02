@@ -1,0 +1,9 @@
+---
+
+- name: ELASTICSEARCH | Installation
+  import_tasks: install.yml
+  tags: install
+
+- name: ELASTICSEARCH | Configuration
+  import_tasks: configure.yml
+  tags: configure

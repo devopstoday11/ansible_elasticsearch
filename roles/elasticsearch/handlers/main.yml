@@ -1,0 +1,7 @@
+---
+
+- name: Restart elasticsearch
+  systemd:
+    enabled: yes
+    name: elasticsearch
+    state: restarted

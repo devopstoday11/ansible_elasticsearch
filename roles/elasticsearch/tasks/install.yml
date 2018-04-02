@@ -1,0 +1,17 @@
+---
+
+- name: ELASTICSEARCH | Import key
+  apt_key:
+    url: "{{ elasticsearch_apt_key }}"
+    state: present
+
+- name: ELASTICSEARCH | Add repository
+  apt_repository:
+    repo: "{{ elasticsearch_apt_url }}"
+    state: present
+
+- name: ELASTICSEARCH | Install packages
+  apt:
+    name: elasticsearch
+    update_cache: yes
+    state: present

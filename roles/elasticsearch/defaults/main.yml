@@ -1,0 +1,38 @@
+---
+
+elasticsearch_major_version: "6.x"
+elasticsearch_version: "6.2.0"
+elasticsearch_apt_key: "https://artifacts.elastic.co/GPG-KEY-elasticsearch"
+elasticsearch_apt_url: "deb https://artifacts.elastic.co/packages/{{ elasticsearch_major_version }}/apt stable main"
+
+elasticsearch_user: elasticsearch
+elasticsearch_group: elasticsearch
+
+# Main configuration
+elasticsearch_cluster_name: "ELS_DEFAULT_NAME"
+elasticsearch_node_name: "{{ ansible_hostname }}"
+elasticsearch_path_data: "/opt/elasticsearch/data"
+elasticsearch_path_logs: "/var/log/elasticsearch"
+elasticsearch_bootstrap_memory_lock: "false"
+elasticsearch_network_host: "{{ inventory_hostname }}"
+elasticsearch_http_port: 9200
+elasticsearch_discovery_zen_ping_unicast_hosts: "[\"{{ groups['master'] | join('\", \"') }}\"]"
+elasticsearch_zen_minimum_master_nodes: 2
+elasticsearch_gateway_recover_after_nodes: 2
+elasticsearch_action_destructive_requires_name: "true"
+
+# JVM Options
+elasticsearch_jvm_xms: 2g
+elasticsearch_jvm_xmx: 2g
+
+# Default environment values
+elasticsearch_home: /usr/share/elasticsearch
+elasticsearch_java_home: ''
+elasticsearch_path_conf: /etc/elasticsearch
+elasticsearch_pid_dir: /var/run/elasticsearch
+elasticsearch_java_heap: '' # example: "-Xms{{ elasticsearch_jvm_xms }} -Xmx{{ elasticsearch_jvm_xmx }}"
+elasticsearch_restart_on_upgrade: "true"
+elasticsearch_startup_sleep_time: 5
+elasticsearch_max_open_files: 65536
+elasticsearch_max_locked_memory: unlimited
+elasticsearch_max_map_count: 262144
