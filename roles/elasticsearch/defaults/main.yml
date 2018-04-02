@@ -14,7 +14,7 @@ elasticsearch_node_name: "{{ ansible_hostname }}"
 elasticsearch_path_data: "/opt/elasticsearch/data"
 elasticsearch_path_logs: "/var/log/elasticsearch"
 elasticsearch_bootstrap_memory_lock: "false"
-elasticsearch_network_host: "{{ inventory_hostname }}"
+elasticsearch_network_host: "{{ inventory_hostname }}" # or "[_local_, _site_]"
 elasticsearch_http_port: 9200
 elasticsearch_discovery_zen_ping_unicast_hosts: "[\"{{ groups['master'] | join('\", \"') }}\"]"
 elasticsearch_zen_minimum_master_nodes: 2
