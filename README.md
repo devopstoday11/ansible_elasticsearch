@@ -51,6 +51,14 @@ elasticsearch03                  running (virtualbox)
 
 #### Deployment
 
+This playbook has some dependencies to other roles that must be downloaded before executing the playbook :
+
+```bash
+$ ansible-galaxy install -r requirements.yml
+```
+
+This command should download the Java role from Wikitops Github account to the local role path.
+
 To deploy the Elasticsearch cluster, you just have to run the Ansible playbook elasticsearch.yml with this command :
 
 ```
@@ -93,3 +101,7 @@ vagrant destroy
 ## Author
 
 Member of Wikitops : https://www.wikitops.io/
+
+## Licence
+
+This project is licensed under the Apache License, Version 2.0. For the full text of the license, see the LICENSE file.
