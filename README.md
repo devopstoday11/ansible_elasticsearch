@@ -1,4 +1,5 @@
 # Ansible : Playbook Elasticsearch
+
 The aim of this project is to deploy an Elasticsearch cluster on Vagrant.
 
 ## Getting Started
@@ -13,8 +14,8 @@ What things you need to run this Ansible playbook :
 * Update the Vagrant file based on your computer (CPU, memory), if needed
 * You must have download the ubuntu Xenial64 vagrant box :
 
-```
-vagrant box add https://app.vagrantup.com/ubuntu/boxes/xenial64
+```bash
+$ vagrant box add https://app.vagrantup.com/ubuntu/boxes/xenial64
 ```
 
 ### Usage
@@ -27,19 +28,19 @@ Be aware that you need to be in the Vagrant directory to be able to run the comm
 
 Vagrant needs to init the project to run and build it :
 
-```
-vagrant up
+```bash
+$ vagrant up
 ```
 
 After build, you can check which virtual machine Vagrant has created :
 
-```
-vagrant status
+```bash
+$ vagrant status
 ```
 
 If all run like it is expected, you should see something like this :
 
-```
+```bash
 $ vagrant status
 
 Current machine states:
@@ -61,15 +62,15 @@ This command should download the Java role from Wikitops Github account to the l
 
 To deploy the Elasticsearch cluster, you just have to run the Ansible playbook elasticsearch.yml with this command :
 
-```
-ansible-playbook elasticsearch.yml
+```bash
+$ ansible-playbook elasticsearch.yml
 ```
 
 If everything run has expected, you should get the cluster status by this URL : http://10.0.3.121:9200/_cluster/health
 
 Or by this curl command :
 
-```
+```bash
 $ curl "http://10.0.3.121:9200/_cluster/health?pretty"
 {
   "cluster_name" : "ELS_DEFAULT_NAME",
@@ -94,8 +95,8 @@ $ curl "http://10.0.3.121:9200/_cluster/health?pretty"
 
 To destroy on what Vagrant has created, just run this command :
 
-```
-vagrant destroy
+```bash
+$ vagrant destroy
 ```
 
 ## Author
