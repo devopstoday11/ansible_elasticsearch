@@ -38,7 +38,7 @@ After build, you can check which virtual machine Vagrant has created :
 $ vagrant status
 ```
 
-If all run like it is expected, you should see something like this :
+If everything run as expected, you should see something like this :
 
 ```bash
 $ vagrant status
