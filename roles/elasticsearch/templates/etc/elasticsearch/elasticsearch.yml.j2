@@ -66,7 +66,7 @@ http.port: {{ elasticsearch_http_port }}
 # Pass an initial list of hosts to perform discovery when new node is started:
 # The default list of hosts is ["127.0.0.1", "[::1]"]
 #
-discovery.zen.ping.unicast.hosts: {{ elasticsearch_discovery_zen_ping_unicast_hosts }}
+discovery.zen.ping.unicast.hosts: "[{% for host in groups['elastic-master'] %}{{ hostvars[host].ip }}{% if not loop.last %},{% endif %}{% endfor %}]"
 #
 # Prevent the "split brain" by configuring the majority of nodes (total number of master-eligible nodes / 2 + 1):
 #
@@ -92,17 +92,17 @@ action.destructive_requires_name: {{ elasticsearch_action_destructive_requires_n
 #
 # Define roles for each nodes
 #
-{% if inventory_hostname in groups['master'] %}
+{% if inventory_hostname in groups['elastic-master'] %}
 node.master: true
 {% else %}
 node.master: false
 {% endif %}
-{% if inventory_hostname in groups['data'] %}
+{% if inventory_hostname in groups['elastic-data'] %}
 node.data: true
 {% else %}
 node.data: false
 {% endif %}
-{% if inventory_hostname in groups['ingest'] %}
+{% if inventory_hostname in groups['elastic-ingest'] %}
 node.ingest: true
 {% else %}
 node.ingest: false

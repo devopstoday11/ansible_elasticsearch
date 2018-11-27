@@ -11,7 +11,7 @@
     state: present
 
 - name: ELASTICSEARCH | Install packages
-  apt:
+  package:
     name: elasticsearch
     update_cache: yes
     state: present

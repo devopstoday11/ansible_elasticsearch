@@ -1,8 +1,8 @@
 ---
 
-- name: ELASTICSEARCH | Installation
-  import_tasks: install.yml
-  tags: install
+- name: ELASTICSEARCH | Manage Debian environment
+  import_tasks: debian.yml
+  when: ansible_os_family == 'Debian'
 
 - name: ELASTICSEARCH | Configuration
   import_tasks: configure.yml

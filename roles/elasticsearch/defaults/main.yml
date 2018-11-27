@@ -1,10 +1,18 @@
 ---
 
+###
+# ELASTICSEARCH
+###
+
+# Version
 elasticsearch_major_version: "6.x"
-elasticsearch_version: "6.4.1"
+elasticsearch_version: "6.5.1"
+
+# Debian
 elasticsearch_apt_key: "https://artifacts.elastic.co/GPG-KEY-elasticsearch"
 elasticsearch_apt_url: "deb https://artifacts.elastic.co/packages/{{ elasticsearch_major_version }}/apt stable main"
 
+# User
 elasticsearch_user: elasticsearch
 elasticsearch_group: elasticsearch
 
@@ -14,9 +22,8 @@ elasticsearch_node_name: "{{ ansible_hostname }}"
 elasticsearch_path_data: "/opt/elasticsearch/data"
 elasticsearch_path_logs: "/var/log/elasticsearch"
 elasticsearch_bootstrap_memory_lock: "false"
-elasticsearch_network_host: "{{ inventory_hostname }}" # or "[_local_, _site_]"
+elasticsearch_network_host: "{{ hostvars[inventory_hostname].ip }}" # or "[_local_, _site_]"
 elasticsearch_http_port: 9200
-elasticsearch_discovery_zen_ping_unicast_hosts: "[\"{{ groups['master'] | join('\", \"') }}\"]"
 elasticsearch_zen_minimum_master_nodes: 2
 elasticsearch_gateway_recover_after_nodes: 2
 elasticsearch_action_destructive_requires_name: "true"
