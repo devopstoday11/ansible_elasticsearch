@@ -6,7 +6,7 @@
 
 # Version
 elasticsearch_major_version: "6.x"
-elasticsearch_version: "6.5.1"
+elasticsearch_version: "6.7.1"
 
 # Debian
 elasticsearch_apt_key: "https://artifacts.elastic.co/GPG-KEY-elasticsearch"
