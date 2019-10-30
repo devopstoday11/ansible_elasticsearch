@@ -5,12 +5,23 @@
 ###
 
 # Version
-elasticsearch_major_version: "6.x"
-elasticsearch_version: "6.7.1"
+elasticsearch_major_version: "7.x"
+elasticsearch_version: "7.4.1"
 
 # Debian
 elasticsearch_apt_key: "https://artifacts.elastic.co/GPG-KEY-elasticsearch"
 elasticsearch_apt_url: "deb https://artifacts.elastic.co/packages/{{ elasticsearch_major_version }}/apt stable main"
+
+# Redhat
+elasticsearch_redhat_repository:
+  - description: "Elasticsearch repository for {{ elasticsearch_major_version }} packages"
+    enabled: true
+    gpgcheck: true
+    gpgkey: https://artifacts.elastic.co/GPG-KEY-elasticsearch
+    name: elasticsearch-{{ elasticsearch_major_version }}
+    reposdir: /etc/yum.repos.d
+    state: present
+    url: https://artifacts.elastic.co/packages/oss-{{ elasticsearch_major_version }}/yum
 
 # User
 elasticsearch_user: elasticsearch

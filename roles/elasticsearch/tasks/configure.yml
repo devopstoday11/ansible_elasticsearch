@@ -1,6 +1,6 @@
 ---
 
-- name: ELASTICSEARCH | Create directories
+- name: ELASTICSEARCH CONFIGURE | Create directories
   file:
     path: "{{ item.path }}"
     state: directory
@@ -12,7 +12,7 @@
     - { path: "{{ elasticsearch_path_logs }}", owner: "{{ elasticsearch_user }}", group: "{{ elasticsearch_group }}", mode: "0750" }
     - { path: "{{ elasticsearch_path_data }}", owner: "{{ elasticsearch_user }}", group: "{{ elasticsearch_group }}", mode: "0750" }
 
-- name: ELASTCISEARCH | Configure
+- name: ELASTCISEARCH CONFIGURE | Configure
   template:
     src: "etc/elasticsearch/elasticsearch.yml.j2"
     dest: "/etc/elasticsearch/elasticsearch.yml"
@@ -21,7 +21,7 @@
     mode: 0644
   notify: Restart elasticsearch
 
-- name: ELASTCISEARCH | Configure default environment values
+- name: ELASTCISEARCH CONFIGURE | Configure default environment values
   template:
     src: "etc/default/elasticsearch.j2"
     dest: "/etc/default/elasticsearch"
@@ -30,7 +30,7 @@
     mode: 0644
   notify: Restart elasticsearch
 
-- name: ELASTCISEARCH | Configure JVM
+- name: ELASTCISEARCH CONFIGURE | Configure JVM
   template:
     src: "etc/elasticsearch/jvm.options.j2"
     dest: "/etc/elasticsearch/jvm.options"
@@ -39,7 +39,7 @@
     mode: 0644
   notify: Restart elasticsearch
 
-- name: ELASTCISEARCH | Configure Log4j
+- name: ELASTCISEARCH CONFIGURE | Configure Log4j
   template:
     src: "etc/elasticsearch/log4j2.properties.j2"
     dest: "/etc/elasticsearch/log4j2.properties"

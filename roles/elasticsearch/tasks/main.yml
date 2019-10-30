@@ -4,6 +4,10 @@
   import_tasks: debian.yml
   when: ansible_os_family == 'Debian'
 
+- name: ELASTICSEARCH | Manage Redhat environment
+  include_tasks: redhat.yml
+  when: ansible_os_family == "RedHat"
+
 - name: ELASTICSEARCH | Configuration
   import_tasks: configure.yml
   tags: configure

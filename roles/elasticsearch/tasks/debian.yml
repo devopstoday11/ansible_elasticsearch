@@ -1,16 +1,16 @@
 ---
 
-- name: ELASTICSEARCH | Import key
+- name: ELASTICSEARCH DEBIAN | Import key
   apt_key:
     url: "{{ elasticsearch_apt_key }}"
     state: present
 
-- name: ELASTICSEARCH | Add repository
+- name: ELASTICSEARCH DEBIAN | Add repository
   apt_repository:
     repo: "{{ elasticsearch_apt_url }}"
     state: present
 
-- name: ELASTICSEARCH | Install packages
+- name: ELASTICSEARCH DEBIAN | Install packages
   package:
     name: elasticsearch
     update_cache: yes
