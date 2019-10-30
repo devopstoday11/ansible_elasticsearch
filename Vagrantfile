@@ -9,7 +9,7 @@ SUPPORTED_OS = {
 }
 
 # Vagrant instance management
-$os                     = "centos"
+$os                     = "ubuntu"
 $num_instances          = 3
 $num_instances_master   = 3
 $num_instances_data     = 3
